@@ -1,0 +1,12 @@
+{
+  "name": "hydro-example-suite",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "test": "hydro"
+  },
+  "devDependencies": {
+    "chai": "latest",
+    "hydro": "latest"
+  }
+}
