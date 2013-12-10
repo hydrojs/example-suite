@@ -1,12 +1,6 @@
 var assert = chai.assert;
 
-describe('assert', function() {
-  it('fail', function () {
-    chai.expect(function () {
-      assert.fail();
-    }).to.throw(chai.AssertionError);
-  });
-
+describe('first', function() {
   it('isTrue', function () {
     assert.isTrue(true);
 
@@ -19,7 +13,7 @@ describe('assert', function() {
     }, "expected 1 to be true");
 
     err(function() {
-      assert.isTrue('test');
+      assert.isFalse('test');
     }, "expected 'test' to be true");
   });
 
@@ -39,6 +33,51 @@ describe('assert', function() {
     err(function () {
       assert.ok('');
     }, "expected '' to be truthy");
+  });
+});
+
+
+describe('assert', function() {
+  it('fail', function () {
+    chai.expect(function () {
+      assert.fail();
+    }).to.throw(chai.AssertionError);
+  });
+
+  describe('nested 2', function() {
+    it('isTrue', function () {
+      assert.isTrue(true);
+
+      err(function() {
+        assert.isTrue(false);
+      }, "expected false to be true");
+
+      err(function() {
+        assert.isTrue(1);
+      }, "expected 1 to be true");
+
+      err(function() {
+        assert.isTrue('test');
+      }, "expected 'test' to be true");
+    });
+
+    it('ok', function () {
+      assert.ok(true);
+      assert.ok(1);
+      assert.ok('test');
+
+      err(function () {
+        assert.ok(false);
+      }, "expected false to be truthy");
+
+      err(function () {
+        assert.ok(0);
+      }, "expected 0 to be truthy");
+
+      err(function () {
+        assert.ok('');
+      }, "expected '' to be truthy");
+    });
   });
 
   it('notOk', function () {
@@ -379,7 +418,7 @@ describe('assert', function() {
     }, "expected false not to be a boolean");
   });
 
-  it.skip('include', function() {
+  it('include', function() {
     assert.include('foobar', 'bar');
     assert.include([ 1, 2, 3], 3);
 
@@ -390,12 +429,12 @@ describe('assert', function() {
     err(function () {
       assert.include(undefined, 'bar');
     }, "expected an array or string");
-  });
+  }).skip();
 
-  it.skip('notInclude', function () {
+  it('notInclude', function () {
     // fails intentionally
     assert.notInclude([ 1, 2, 3 ], 3);
-  });
+  }).skip();
 
   it('lengthOf', function() {
     assert.lengthOf([1,2,3], 3);

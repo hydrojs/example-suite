@@ -6,7 +6,9 @@
     "test": "hydro"
   },
   "devDependencies": {
-    "chai": "latest",
-    "hydro": "latest"
+    "chai": "*",
+    "hydro": "*",
+    "hydro-bdd": "0.0.3",
+    "hydro-simple": "~1.0.3"
   }
 }
